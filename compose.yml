@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16.1
+    container_name: postgres
+    hostname: postgres
+    env_file: .env
+    volumes:
+      - type: volume
+        source: pgdata
+        target: /var/lib/postgresql
+    ports:
+      - 5432:5432/tcp
+
+volumes:
+  pgdata:
