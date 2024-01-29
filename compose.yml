@@ -11,5 +11,19 @@ services:
     ports:
       - 5432:5432/tcp
 
+  redis:
+    image: redis:7.2.4
+    container_name: redis
+    hostname: redis
+    env_file: .env
+    volumes:
+      - type: volume
+        source: redisdata
+        target: /data
+    ports:
+      - 6379:6379
+    command: ["redis-server", "--save", "60", "1"]
+
 volumes:
   pgdata:
+  redisdata:
